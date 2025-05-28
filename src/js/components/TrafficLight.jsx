@@ -6,6 +6,10 @@ import React, { useState } from "react";
 const Home = () => {
   const [glowLight, setGlowLight] = useState(null);
 
+  const doesLightGlow = (color) => {
+    setGlowLight(prev => (prev === color ? null : color));
+  };
+ 
   return (
     <div>
       <div className="traffic-light-box">
@@ -13,16 +17,16 @@ const Home = () => {
 
         <div
          className={`red ${glowLight === "red" ? "glow" : ""}`}
-         onClick={() => setGlowLight("red")}
+         onClick={() => doesLightGlow("red")}
          ></div>
 
         <div 
         className={`yellow ${glowLight === "yellow" ? "glow" : ""}`}
-         onClick={() => setGlowLight("yellow")}></div>
+         onClick={() => doesLightGlow("yellow")}></div>
 
         <div 
         className={`green ${glowLight === "green" ? "glow" : ""}`}
-         onClick={() => setGlowLight("green")}></div>
+         onClick={() => doesLightGlow("green")}></div>
       </div>
     </div>
   );
